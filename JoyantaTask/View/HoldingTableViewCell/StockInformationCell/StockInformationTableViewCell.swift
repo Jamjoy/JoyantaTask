@@ -23,7 +23,7 @@ class StockInformationTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setupCell(dataSetup: StockHoldingListModel) {
+    func setupCell(dataSetup: StockHoldingListModel, pl: Double) {
         self.stockNameLbl.text = dataSetup.symbol
         self.netQtyLbl.text = "NET QTY:"
         self.netQtyValue.text = "\(dataSetup.quantity)"
@@ -31,5 +31,14 @@ class StockInformationTableViewCell: UITableViewCell {
         self.ltpValue.text = "₹ \(dataSetup.ltp)"
         self.plLbl.text = "P&L:"
         self.ltpValue.text = "₹ \(dataSetup.ltp)"
+        self.plValue.text = "₹ \(pl)"
+        
+        if pl > 0 {
+            self.plValue.textColor = UIColor.green
+        } else if pl < 0 {
+            self.plValue.textColor = UIColor.red
+        } else {
+            self.plValue.textColor = UIColor.black
+        }
     }
 }

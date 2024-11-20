@@ -41,7 +41,7 @@ extension StockHoldingViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = stockHoldingListTableView.dequeueReusableCell(withIdentifier: "StockInformationTableViewCell", for: indexPath) as? StockInformationTableViewCell
         let dataSetup = presenter.dataSource()
-        cell?.setupCell(dataSetup: dataSetup[indexPath.row])
+        cell?.setupCell(dataSetup: dataSetup[indexPath.row], pl: presenter.calculateEachStockPL(stockInformation: dataSetup[indexPath.row]).pl)
         return cell ?? UITableViewCell()
     }
     
