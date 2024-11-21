@@ -10,6 +10,9 @@ import UIKit
 class StockHoldingViewController: UIViewController {
     
     @IBOutlet weak var stockHoldingListTableView: UITableView!
+    @IBOutlet weak var plLabel: UILabel!
+    @IBOutlet weak var arrowIcon: UIImageView!
+    @IBOutlet weak var plValue: UILabel!
     
     var presenter = StockHoldingPresenter()
 
@@ -54,6 +57,7 @@ extension StockHoldingViewController: PresenterToViewDelegate {
     func reloadTableView() {
         DispatchQueue.main.async { [weak self] in
             self?.stockHoldingListTableView.reloadData()
+            self?.plValue.text = "\(self?.presenter.calculateAllStockPL().toalPL ?? 0.0)"
         }
     }
 }
